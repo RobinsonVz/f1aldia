@@ -29,11 +29,76 @@ tabButtons.forEach((btn) => {
 });
 
 /* =========================================================
-   3) CUENTA REGRESIVA A LA PRÓXIMA CARRERA
-   Cambia esta fecha cada vez que pase una carrera, para
-   apuntar siempre al próximo Gran Premio del calendario.
+   3) CALENDARIO DE CARRERAS + PRÓXIMA CARRERA AUTOMÁTICA
+   Aquí guardamos la fecha de cada Gran Premio (el domingo de
+   carrera). El código detecta solo cuál es la próxima carrera
+   comparando con la fecha de hoy, así ya no hay que cambiar
+   nada a mano cada vez que pasa un GP.
 ========================================================= */
-const nextRaceDate = new Date("2026-07-19T15:00:00+02:00").getTime(); // GP de Bélgica
+const races = [
+  { round: 1,  name: "GP de Australia",          circuit: "Albert Park, Melbourne",                date: "2026-03-08T15:00:00" },
+  { round: 2,  name: "GP de China",               circuit: "Shanghai International Circuit",        date: "2026-03-15T15:00:00" },
+  { round: 3,  name: "GP de Japón",                circuit: "Suzuka Circuit",                         date: "2026-03-29T15:00:00" },
+  { round: 4,  name: "GP de Miami",                circuit: "Miami International Autodrome",         date: "2026-05-03T15:00:00" },
+  { round: 5,  name: "GP de Canadá",              circuit: "Circuit Gilles Villeneuve",              date: "2026-05-24T15:00:00" },
+  { round: 6,  name: "GP de Mónaco",               circuit: "Circuit de Monaco",                      date: "2026-06-07T15:00:00" },
+  { round: 7,  name: "GP de Barcelona-Catalunya",  circuit: "Circuit de Barcelona-Catalunya",         date: "2026-06-14T15:00:00" },
+  { round: 8,  name: "GP de Austria",             circuit: "Red Bull Ring, Spielberg",               date: "2026-06-28T15:00:00" },
+  { round: 9,  name: "GP de Gran Bretaña",         circuit: "Silverstone Circuit",                    date: "2026-07-05T15:00:00" },
+  { round: 10, name: "GP de Bélgica",             circuit: "Circuito de Spa-Francorchamps",          date: "2026-07-19T15:00:00" },
+  { round: 11, name: "GP de Hungría",             circuit: "Hungaroring, Budapest",                  date: "2026-07-26T15:00:00" },
+  { round: 12, name: "GP de Países Bajos",        circuit: "Circuit Zandvoort",                      date: "2026-08-23T15:00:00" },
+  { round: 13, name: "GP de Italia",               circuit: "Autodromo di Monza",                     date: "2026-09-06T15:00:00" },
+  { round: 14, name: "GP de España",              circuit: "Circuito de Madring, Madrid",            date: "2026-09-13T15:00:00" },
+  { round: 15, name: "GP de Azerbaiyán",          circuit: "Baku City Circuit",                      date: "2026-09-27T15:00:00" },
+  { round: 16, name: "GP de Singapur",            circuit: "Marina Bay Street Circuit",              date: "2026-10-11T20:00:00" },
+  { round: 17, name: "GP de Estados Unidos",      circuit: "Circuit of The Americas, Austin",        date: "2026-10-25T15:00:00" },
+  { round: 18, name: "GP de México",              circuit: "Autódromo Hermanos Rodríguez",           date: "2026-11-01T15:00:00" },
+  { round: 19, name: "GP de Brasil",              circuit: "Autódromo José Carlos Pace, Interlagos", date: "2026-11-08T15:00:00" },
+  { round: 20, name: "GP de Las Vegas",           circuit: "Las Vegas Strip Circuit",                date: "2026-11-21T22:00:00" },
+  { round: 21, name: "GP de Catar",               circuit: "Losail International Circuit",           date: "2026-11-29T15:00:00" },
+  { round: 22, name: "GP de Abu Dabi",            circuit: "Yas Marina Circuit",                      date: "2026-12-06T15:00:00" },
+];
+
+const now = new Date();
+const nextRace = races.find((r) => new Date(r.date).getTime() > now.getTime());
+
+// Actualiza el "Ronda X de 22" del encabezado según la carrera actual
+const heroEyebrowEl = document.querySelector(".actual-hero__eyebrow");
+const totalRaces = races.length;
+
+if (heroEyebrowEl) {
+  const currentRound = nextRace ? nextRace.round : totalRaces;
+  heroEyebrowEl.textContent = `Temporada 2026 · Ronda ${currentRound} de ${totalRaces}`;
+}
+
+const nextRaceNameEl = document.querySelector(".next-race__name");
+const nextRaceCircuitEl = document.querySelector(".next-race__circuit");
+
+let nextRaceDate;
+
+if (nextRace) {
+  nextRaceDate = new Date(nextRace.date).getTime();
+  nextRaceNameEl.textContent = nextRace.name;
+  nextRaceCircuitEl.textContent = nextRace.circuit;
+} else {
+  // Si ya se corrieron las 22 carreras, no hay próxima fecha
+  nextRaceNameEl.textContent = "Temporada finalizada";
+  nextRaceCircuitEl.textContent = "Vuelve pronto para la 2027";
+}
+
+// Marca automáticamente qué carreras ya pasaron (is-done) y cuál es la próxima (is-next)
+const calendarItems = document.querySelectorAll(".calendar-list li");
+calendarItems.forEach((li, index) => {
+  const race = races[index];
+  li.classList.remove("is-done", "is-next");
+
+  if (nextRace && race.round === nextRace.round) {
+    li.classList.add("is-next");
+  } else if (new Date(race.date).getTime() < now.getTime()) {
+    li.classList.add("is-done");
+  }
+});
 
 const cdDays = document.getElementById("cd-days");
 const cdHours = document.getElementById("cd-hours");
@@ -41,8 +106,10 @@ const cdMin = document.getElementById("cd-min");
 const cdSec = document.getElementById("cd-sec");
 
 function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = nextRaceDate - now;
+  if (!nextRaceDate) return;
+
+  const nowTime = new Date().getTime();
+  const diff = nextRaceDate - nowTime;
 
   if (diff <= 0) {
     cdDays.textContent = "00";
@@ -160,3 +227,69 @@ teamCards.forEach((card) => {
     teamModalOverlay.classList.remove("is-visible");
   });
 });
+
+/* =========================================================
+   6) CLASIFICACIÓN AUTOMÁTICA (Pilotos y Constructores)
+   Consultamos la API pública Jolpica-F1 (sucesora de Ergast)
+   para traer la clasificación real y actualizada del
+   campeonato 2026. Si la API falla, se quedan las tablas
+   que ya tenías escritas como respaldo.
+========================================================= */
+async function cargarClasificacion() {
+  const temporada = 2026;
+
+  try {
+    // Pedimos ambas clasificaciones al mismo tiempo
+    const [resPilotos, resConstructores] = await Promise.all([
+      fetch(`https://api.jolpi.ca/ergast/f1/${temporada}/driverstandings/?format=json`),
+      fetch(`https://api.jolpi.ca/ergast/f1/${temporada}/constructorstandings/?format=json`),
+    ]);
+
+    const dataPilotos = await resPilotos.json();
+    const dataConstructores = await resConstructores.json();
+
+    const listaPilotos =
+      dataPilotos.MRData.StandingsTable.StandingsLists[0]?.DriverStandings;
+    const listaConstructores =
+      dataConstructores.MRData.StandingsTable.StandingsLists[0]?.ConstructorStandings;
+
+    // --- Tabla de Pilotos ---
+    if (listaPilotos && listaPilotos.length > 0) {
+      const tbodyPilotos = document.querySelector('.standings-table[data-panel="pilotos"] tbody');
+      tbodyPilotos.innerHTML = listaPilotos
+        .map((piloto) => {
+          const nombre = `${piloto.Driver.givenName} ${piloto.Driver.familyName}`;
+          const equipo = piloto.Constructors[0]?.name ?? "—";
+          return `<tr><td>${piloto.position}</td><td>${nombre}</td><td>${equipo}</td><td>${piloto.points}</td></tr>`;
+        })
+        .join("");
+    }
+
+    // --- Tabla de Constructores ---
+    if (listaConstructores && listaConstructores.length > 0) {
+      const tbodyConstructores = document.querySelector('.standings-table[data-panel="constructores"] tbody');
+      tbodyConstructores.innerHTML = listaConstructores
+        .map((equipo) => {
+          return `<tr><td>${equipo.position}</td><td>${equipo.Constructor.name}</td><td>${equipo.points}</td></tr>`;
+        })
+        .join("");
+    }
+
+    // --- Actualiza el texto "Después del GP de X · Ronda Y/22" ---
+    const infoRonda = dataPilotos.MRData.StandingsTable.StandingsLists[0];
+    const clasifEyebrowEl = document.querySelector("#actual-clasificacion .section__eyebrow");
+
+    if (infoRonda && clasifEyebrowEl) {
+      const ultimaRonda = races.find((r) => r.round === Number(infoRonda.round));
+      const nombreCarrera = ultimaRonda ? ultimaRonda.name : `Ronda ${infoRonda.round}`;
+      clasifEyebrowEl.textContent = `Después del ${nombreCarrera} · Ronda ${infoRonda.round}/22`;
+    }
+
+  } catch (error) {
+    // Si algo falla (sin internet, API caída, etc.) dejamos las tablas
+    // que ya estaban escritas en el HTML y solo avisamos en consola.
+    console.warn("No se pudo actualizar la clasificación en vivo:", error);
+  }
+}
+
+cargarClasificacion();
