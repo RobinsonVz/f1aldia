@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fórmula 1 | Historia, Escuderías y Pilotos</title>
+  <title>Actualidad F1 2026 | F1 History</title>
 
-  <!-- Fuentes: Titillium Web (la usan las gráficas oficiales de F1), Inter (texto) y Space Mono (para que los números parezcan un tablero de tiempos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700;900&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
+  <!-- Reutilizamos las variables y estilos generales de la página principal -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="actualidad.css" />
 </head>
 <body>
 
-  <!-- ===== BARRA DE NAVEGACIÓN ===== -->
+  <!-- ===== BARRA DE NAVEGACIÓN (igual que index.html) ===== -->
   <header class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="#inicio" class="navbar__logo">
+      <a href="index.html" class="navbar__logo">
         <span class="navbar__flag" aria-hidden="true"></span>
         F1<span class="navbar__logo-sub">HISTORY</span>
       </a>
 
       <nav class="navbar__links" id="navLinks">
-        <a href="#inicio">Inicio</a>
-        <a href="#historia">Historia</a>
-        <a href="#escuderias">Escuderías</a>
-        <a href="#pilotos">Pilotos</a>
-        <a href="actualidad.html">Actualidad</a>
+        <a href="index.html">Inicio</a>
+        <a href="index.html" class="is-active">Actualidad</a>
+        <a href="historia.html">Historia</a>
+        <a href="historia.html#escuderias">Escuderías</a>
+        <a href="historia.html#pilotos">Pilotos</a>
       </nav>
 
       <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
@@ -35,266 +36,515 @@
     </div>
   </header>
 
-  <!-- ===== HERO: secuencia de luces de largada ===== -->
-  <section class="hero" id="inicio">
-    <div class="hero__lights" id="startLights" aria-hidden="true">
-      <span class="light"></span>
-      <span class="light"></span>
-      <span class="light"></span>
-      <span class="light"></span>
-      <span class="light"></span>
-    </div>
+  <!-- ===== ENCABEZADO DE LA PÁGINA ===== -->
+  <section class="actual-hero">
+    <p class="actual-hero__eyebrow">Temporada 2026 · Ronda 9 de 22</p>
+    <h1 class="actual-hero__title">Actualidad F1</h1>
+    <p class="actual-hero__subtitle">
+      Plantilla de pilotos, escuderías, clasificación de pilotos y constructores,
+      calendario completo y los circuitos más icónicos del año.
+    </p>
 
-    <div class="hero__content">
-      <p class="hero__eyebrow">Desde 1950 hasta hoy</p>
-      <h1 class="hero__title">La ciencia<br>de ir rápido</h1>
-      <p class="hero__subtitle">
-        Un repaso a la historia de la Fórmula 1, sus escuderías más
-        laureadas y las cifras de tres pilotos que redefinieron el deporte.
-      </p>
-      <a href="#historia" class="hero__cta">Bajar al pit lane ↓</a>
+    <!-- Menú corto para saltar entre secciones de esta página -->
+    <nav class="actual-subnav">
+      <a href="#actual-pilotos">Pilotos</a>
+      <a href="#actual-escuderias">Escuderías</a>
+      <a href="#actual-clasificacion">Clasificación</a>
+      <a href="#actual-noticias">Noticias</a>
+      <a href="#actual-calendario">Calendario</a>
+      <a href="#actual-circuitos">Circuitos</a>
+    </nav>
+  </section>
+
+  <!-- ===== PRÓXIMA CARRERA / CUENTA REGRESIVA ===== -->
+  <section class="next-race" id="nextRace">
+    <div class="next-race__info">
+      <p class="next-race__label">Próxima carrera</p>
+      <h2 class="next-race__name">GP de Bélgica</h2>
+      <p class="next-race__circuit">Circuito de Spa-Francorchamps · 17–19 de julio de 2026</p>
+    </div>
+    <div class="next-race__countdown" id="countdown">
+      <div><span id="cd-days">00</span><small>Días</small></div>
+      <div><span id="cd-hours">00</span><small>Horas</small></div>
+      <div><span id="cd-min">00</span><small>Min</small></div>
+      <div><span id="cd-sec">00</span><small>Seg</small></div>
     </div>
   </section>
 
-  <!-- ===== HISTORIA: línea de tiempo ===== -->
-  <section class="section" id="historia">
+  <!-- ===== PILOTOS DE LA TEMPORADA ACTUAL ===== -->
+  <section class="section" id="actual-pilotos">
     <div class="section__head">
-      <p class="section__eyebrow">Cronología</p>
-      <h2 class="section__title">Siete décadas de Fórmula 1</h2>
-      <p class="section__lead">
-        La categoría nació como un campeonato de siete carreras en Europa
-        y hoy es un espectáculo global. Esta línea de tiempo marca los
-        giros más importantes de su historia.
-      </p>
+      <p class="section__eyebrow">Parrilla 2026</p>
+      <h2 class="section__title">22 pilotos, 11 escuderías</h2>
+      <p class="section__lead">La plantilla completa que compite esta temporada, ordenada por número de piloto.</p>
     </div>
 
-    <ol class="timeline">
-      <li class="timeline__item">
-        <span class="timeline__year">1950</span>
-        <div class="timeline__body">
-          <h3>Nace el Mundial</h3>
-          <p>El 13 de mayo se corre el primer Gran Premio del Campeonato Mundial de Pilotos, en Silverstone, Inglaterra. Giuseppe Farina, con Alfa Romeo, se convierte en el primer campeón de la historia.</p>
-        </div>
-      </li>
+    <div class="actual-drivers-grid">
 
-      <li class="timeline__item">
-        <span class="timeline__year">1960s</span>
-        <div class="timeline__body">
-          <h3>El motor se muda atrás</h3>
-          <p>Los equipos británicos popularizan el motor trasero-central, más ligero y aerodinámico. Lotus, con Colin Chapman, empieza a dominar gracias a la innovación técnica más que a la potencia bruta.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#27F4D2;">
+        <img src="imagenes/actualidad/pilotos/antonelli.jpg" alt="Kimi Antonelli" class="actual-driver__photo">
+        <span class="actual-driver__num">12</span>
+        <h3 class="actual-driver__name">Kimi Antonelli</h3>
+        <p class="actual-driver__team">Mercedes-AMG Petronas</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">1980s</span>
-        <div class="timeline__body">
-          <h3>La era turbo</h3>
-          <p>Los motores turboalimentados superan los 1.000 caballos de fuerza en clasificación. Es también la década de la fibra de carbono y de rivalidades históricas como la de Senna y Prost.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#27F4D2;">
+        <img src="imagenes/actualidad/pilotos/russell.jpg" alt="George Russell" class="actual-driver__photo">
+        <span class="actual-driver__num">63</span>
+        <h3 class="actual-driver__name">George Russell</h3>
+        <p class="actual-driver__team">Mercedes-AMG Petronas</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">1990s</span>
-        <div class="timeline__body">
-          <h3>Seguridad y un nuevo ídolo</h3>
-          <p>Tras el trágico fin de semana de Imola en 1994, la seguridad se vuelve prioridad. En ese mismo año, un joven Michael Schumacher gana su primer título y empieza a construir una dinastía.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#E10600;">
+        <img src="imagenes/actualidad/pilotos/hamilton.jpg" alt="Lewis Hamilton" class="actual-driver__photo">
+        <span class="actual-driver__num">44</span>
+        <h3 class="actual-driver__name">Lewis Hamilton</h3>
+        <p class="actual-driver__team">Scuderia Ferrari</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">2000–2004</span>
-        <div class="timeline__body">
-          <h3>Dominio absoluto de Ferrari</h3>
-          <p>Schumacher y Ferrari ganan cinco campeonatos consecutivos, una de las rachas más dominantes del deporte, apoyada en un equipo técnico liderado por Ross Brawn y Rory Byrne.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#E10600;">
+        <img src="imagenes/actualidad/pilotos/leclerc.jpg" alt="Charles Leclerc" class="actual-driver__photo">
+        <span class="actual-driver__num">16</span>
+        <h3 class="actual-driver__name">Charles Leclerc</h3>
+        <p class="actual-driver__team">Scuderia Ferrari</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">2014</span>
-        <div class="timeline__body">
-          <h3>Llega la era híbrida</h3>
-          <p>La F1 introduce motores turbo V6 híbridos, mucho más eficientes. Mercedes entiende mejor que nadie el nuevo reglamento y comienza un ciclo de dominio con Lewis Hamilton como su gran figura.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#FF8000;">
+        <img src="imagenes/actualidad/pilotos/norris.jpg" alt="Lando Norris" class="actual-driver__photo">
+        <span class="actual-driver__num">4</span>
+        <h3 class="actual-driver__name">Lando Norris</h3>
+        <p class="actual-driver__team">McLaren</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">2021–2024</span>
-        <div class="timeline__body">
-          <h3>Se corona un nuevo rey</h3>
-          <p>Tras un final de temporada 2021 histórico, Max Verstappen y Red Bull Racing toman el relevo de Mercedes y encadenan cuatro títulos de pilotos consecutivos.</p>
-        </div>
-      </li>
+      <article class="actual-driver" style="--team-color:#FF8000;">
+        <img src="imagenes/actualidad/pilotos/piastri.jpg" alt="Oscar Piastri" class="actual-driver__photo">
+        <span class="actual-driver__num">81</span>
+        <h3 class="actual-driver__name">Oscar Piastri</h3>
+        <p class="actual-driver__team">McLaren</p>
+      </article>
 
-      <li class="timeline__item">
-        <span class="timeline__year">Hoy</span>
-        <div class="timeline__body">
-          <h3>Nueva generación, misma pasión</h3>
-          <p>Nuevos talentos pelean por el título mientras la F1 vive un boom global de audiencia, impulsado por más carreras, más ciudades y más historias fuera de la pista.</p>
+      <article class="actual-driver" style="--team-color:#3671C6;">
+        <img src="imagenes/actualidad/pilotos/verstappen.jpg" alt="Max Verstappen" class="actual-driver__photo">
+        <span class="actual-driver__num">1</span>
+        <h3 class="actual-driver__name">Max Verstappen</h3>
+        <p class="actual-driver__team">Red Bull Racing</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#3671C6;">
+        <img src="imagenes/actualidad/pilotos/hadjar.jpg" alt="Isack Hadjar" class="actual-driver__photo">
+        <span class="actual-driver__num">6</span>
+        <h3 class="actual-driver__name">Isack Hadjar</h3>
+        <p class="actual-driver__team">Red Bull Racing</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#0090FF;">
+        <img src="imagenes/actualidad/pilotos/gasly.jpg" alt="Pierre Gasly" class="actual-driver__photo">
+        <span class="actual-driver__num">10</span>
+        <h3 class="actual-driver__name">Pierre Gasly</h3>
+        <p class="actual-driver__team">Alpine</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#0090FF;">
+        <img src="imagenes/actualidad/pilotos/colapinto.jpg" alt="Franco Colapinto" class="actual-driver__photo">
+        <span class="actual-driver__num">43</span>
+        <h3 class="actual-driver__name">Franco Colapinto</h3>
+        <p class="actual-driver__team">Alpine</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#6692FF;">
+        <img src="imagenes/actualidad/pilotos/lawson.jpg" alt="Liam Lawson" class="actual-driver__photo">
+        <span class="actual-driver__num">30</span>
+        <h3 class="actual-driver__name">Liam Lawson</h3>
+        <p class="actual-driver__team">Racing Bulls</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#6692FF;">
+        <img src="imagenes/actualidad/pilotos/lindblad.jpg" alt="Arvid Lindblad" class="actual-driver__photo">
+        <span class="actual-driver__num">41</span>
+        <h3 class="actual-driver__name">Arvid Lindblad</h3>
+        <p class="actual-driver__team">Racing Bulls</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#B6BABD;">
+        <img src="imagenes/actualidad/pilotos/bearman.jpg" alt="Oliver Bearman" class="actual-driver__photo">
+        <span class="actual-driver__num">87</span>
+        <h3 class="actual-driver__name">Oliver Bearman</h3>
+        <p class="actual-driver__team">Haas</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#B6BABD;">
+        <img src="imagenes/actualidad/pilotos/ocon.jpg" alt="Esteban Ocon" class="actual-driver__photo">
+        <span class="actual-driver__num">31</span>
+        <h3 class="actual-driver__name">Esteban Ocon</h3>
+        <p class="actual-driver__team">Haas</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00A0DE;">
+        <img src="imagenes/actualidad/pilotos/sainz.jpg" alt="Carlos Sainz" class="actual-driver__photo">
+        <span class="actual-driver__num">55</span>
+        <h3 class="actual-driver__name">Carlos Sainz</h3>
+        <p class="actual-driver__team">Williams</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00A0DE;">
+        <img src="imagenes/actualidad/pilotos/albon.jpg" alt="Alex Albon" class="actual-driver__photo">
+        <span class="actual-driver__num">23</span>
+        <h3 class="actual-driver__name">Alex Albon</h3>
+        <p class="actual-driver__team">Williams</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00304F;">
+        <img src="imagenes/actualidad/pilotos/hulkenberg.jpg" alt="Nico Hülkenberg" class="actual-driver__photo">
+        <span class="actual-driver__num">27</span>
+        <h3 class="actual-driver__name">Nico Hülkenberg</h3>
+        <p class="actual-driver__team">Audi</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00304F;">
+        <img src="imagenes/actualidad/pilotos/bortoleto.jpg" alt="Gabriel Bortoleto" class="actual-driver__photo">
+        <span class="actual-driver__num">5</span>
+        <h3 class="actual-driver__name">Gabriel Bortoleto</h3>
+        <p class="actual-driver__team">Audi</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00665E;">
+        <img src="imagenes/actualidad/pilotos/alonso.jpg" alt="Fernando Alonso" class="actual-driver__photo">
+        <span class="actual-driver__num">14</span>
+        <h3 class="actual-driver__name">Fernando Alonso</h3>
+        <p class="actual-driver__team">Aston Martin</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#00665E;">
+        <img src="imagenes/actualidad/pilotos/stroll.jpg" alt="Lance Stroll" class="actual-driver__photo">
+        <span class="actual-driver__num">18</span>
+        <h3 class="actual-driver__name">Lance Stroll</h3>
+        <p class="actual-driver__team">Aston Martin</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#B02528;">
+        <img src="imagenes/actualidad/pilotos/perez.jpg" alt="Sergio Pérez" class="actual-driver__photo">
+        <span class="actual-driver__num">11</span>
+        <h3 class="actual-driver__name">Sergio Pérez</h3>
+        <p class="actual-driver__team">Cadillac</p>
+      </article>
+
+      <article class="actual-driver" style="--team-color:#B02528;">
+        <img src="imagenes/actualidad/pilotos/bottas.jpg" alt="Valtteri Bottas" class="actual-driver__photo">
+        <span class="actual-driver__num">77</span>
+        <h3 class="actual-driver__name">Valtteri Bottas</h3>
+        <p class="actual-driver__team">Cadillac</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== ESCUDERÍAS 2026 ===== -->
+  <section class="section section--alt" id="actual-escuderias">
+    <div class="section__head">
+      <p class="section__eyebrow">Parrilla de equipos</p>
+      <h2 class="section__title">Las 11 escuderías de 2026</h2>
+      <p class="section__lead">Incluye el debut de Cadillac como undécimo equipo y a Audi como fabricante propio.</p>
+    </div>
+
+    <div class="actual-teams-grid">
+
+      <article class="actual-team" style="--team-color:#27F4D2;" data-founded="1954 (regreso en 2010)" data-base="Brackley, Reino Unido" data-wins="125" data-poles="131" data-best="">
+        <img src="imagenes/actualidad/escuderias/mercedes.png" alt="Mercedes" class="actual-team__logo">
+        <h3>Mercedes-AMG Petronas</h3>
+        <p>Antonelli · Russell</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#E10600;" data-founded="1950" data-base="Maranello, Italia" data-wins="251" data-poles="253" data-best="">
+        <img src="imagenes/actualidad/escuderias/ferrari.png" alt="Ferrari" class="actual-team__logo">
+        <h3>Scuderia Ferrari</h3>
+        <p>Hamilton · Leclerc</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#FF8000;" data-founded="1966" data-base="Woking, Reino Unido" data-wins="189" data-poles="161" data-best="">
+        <img src="imagenes/actualidad/escuderias/mclaren.png" alt="McLaren" class="actual-team__logo">
+        <h3>McLaren</h3>
+        <p>Norris · Piastri</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#3671C6;" data-founded="2005" data-base="Milton Keynes, Reino Unido" data-wins="123" data-poles="101" data-best="">
+        <img src="imagenes/actualidad/escuderias/redbull.png" alt="Red Bull Racing" class="actual-team__logo">
+        <h3>Red Bull Racing</h3>
+        <p>Verstappen · Hadjar</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#0090FF;" data-founded="2021 (linaje Renault desde 1977)" data-base="Enstone, Reino Unido" data-wins="21" data-poles="20" data-best="">
+        <img src="imagenes/actualidad/escuderias/alpine.png" alt="Alpine" class="actual-team__logo">
+        <h3>Alpine</h3>
+        <p>Gasly · Colapinto</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#6692FF;" data-founded="2006 (como Toro Rosso)" data-base="Faenza, Italia" data-wins="2" data-poles="1" data-best="">
+        <img src="imagenes/actualidad/escuderias/racingbulls.png" alt="Racing Bulls" class="actual-team__logo">
+        <h3>Racing Bulls</h3>
+        <p>Lawson · Lindblad</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#B6BABD;" data-founded="2016" data-base="Kannapolis, Estados Unidos" data-wins="0" data-poles="0" data-best="P5 en el GP de Austria 2018 (Romain Grosjean)">
+        <img src="imagenes/actualidad/escuderias/haas.png" alt="Haas" class="actual-team__logo">
+        <h3>Haas</h3>
+        <p>Bearman · Ocon</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#00A0DE;" data-founded="1977" data-base="Grove, Reino Unido" data-wins="114" data-poles="128" data-best="">
+        <img src="imagenes/actualidad/escuderias/williams.png" alt="Williams" class="actual-team__logo">
+        <h3>Williams</h3>
+        <p>Sainz · Albon</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#00304F;" data-founded="1993 (como Sauber, rebautizado Audi en 2026)" data-base="Hinwil, Suiza" data-wins="1" data-poles="1" data-best="">
+        <img src="imagenes/actualidad/escuderias/audi.png" alt="Audi" class="actual-team__logo">
+        <h3>Audi</h3>
+        <p>Hülkenberg · Bortoleto</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#00665E;" data-founded="2021 (linaje Jordan desde 1991)" data-base="Silverstone, Reino Unido" data-wins="0" data-poles="0" data-best="2º puesto en el GP de Mónaco 2023 (Fernando Alonso)">
+        <img src="imagenes/actualidad/escuderias/astonmartin.png" alt="Aston Martin" class="actual-team__logo">
+        <h3>Aston Martin</h3>
+        <p>Alonso · Stroll</p>
+      </article>
+
+      <article class="actual-team" style="--team-color:#B02528;" data-founded="2026" data-base="Charlotte, Estados Unidos" data-wins="0" data-poles="0" data-best="Equipo debutante en 2026, mejor resultado aún por definir">
+        <img src="imagenes/actualidad/escuderias/cadillac.png" alt="Cadillac" class="actual-team__logo">
+        <h3>Cadillac</h3>
+        <p>Pérez · Bottas</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CLASIFICACIÓN (con pestañas Pilotos / Constructores) ===== -->
+  <section class="section" id="actual-clasificacion">
+    <div class="section__head">
+      <p class="section__eyebrow">Después del GP de Gran Bretaña · Ronda 9/22</p>
+      <h2 class="section__title">Clasificación del campeonato</h2>
+      <p class="section__lead">Kimi Antonelli lidera el mundial de pilotos y Mercedes domina el de constructores.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn is-active" data-tab="pilotos">Pilotos</button>
+      <button class="tab-btn" data-tab="constructores">Constructores</button>
+    </div>
+
+    <table class="standings-table" data-panel="pilotos">
+      <thead>
+        <tr><th>Pos</th><th>Piloto</th><th>Equipo</th><th>Puntos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Kimi Antonelli</td><td>Mercedes</td><td>179</td></tr>
+        <tr><td>2</td><td>George Russell</td><td>Mercedes</td><td>154</td></tr>
+        <tr><td>3</td><td>Lewis Hamilton</td><td>Ferrari</td><td>147</td></tr>
+        <tr><td>4</td><td>Charles Leclerc</td><td>Ferrari</td><td>108</td></tr>
+        <tr><td>5</td><td>Lando Norris</td><td>McLaren</td><td>97</td></tr>
+        <tr><td>6</td><td>Oscar Piastri</td><td>McLaren</td><td>82</td></tr>
+        <tr><td>7</td><td>Max Verstappen</td><td>Red Bull</td><td>76</td></tr>
+        <tr><td>8</td><td>Isack Hadjar</td><td>Red Bull</td><td>52</td></tr>
+        <tr><td>9</td><td>Pierre Gasly</td><td>Alpine</td><td>42</td></tr>
+        <tr><td>10</td><td>Liam Lawson</td><td>Racing Bulls</td><td>37</td></tr>
+        <tr><td>11</td><td>Arvid Lindblad</td><td>Racing Bulls</td><td>19</td></tr>
+        <tr><td>12</td><td>Oliver Bearman</td><td>Haas</td><td>18</td></tr>
+        <tr><td>13</td><td>Franco Colapinto</td><td>Alpine</td><td>18</td></tr>
+        <tr><td>14</td><td>Gabriel Bortoleto</td><td>Audi</td><td>6</td></tr>
+        <tr><td>15</td><td>Carlos Sainz</td><td>Williams</td><td>6</td></tr>
+        <tr><td>16</td><td>Alex Albon</td><td>Williams</td><td>5</td></tr>
+        <tr><td>17</td><td>Esteban Ocon</td><td>Haas</td><td>3</td></tr>
+        <tr><td>18</td><td>Fernando Alonso</td><td>Aston Martin</td><td>1</td></tr>
+        <tr><td>19</td><td>Nico Hülkenberg</td><td>Audi</td><td>0</td></tr>
+        <tr><td>20</td><td>Valtteri Bottas</td><td>Cadillac</td><td>0</td></tr>
+        <tr><td>21</td><td>Sergio Pérez</td><td>Cadillac</td><td>0</td></tr>
+        <tr><td>22</td><td>Lance Stroll</td><td>Aston Martin</td><td>0</td></tr>
+      </tbody>
+    </table>
+
+    <table class="standings-table is-hidden" data-panel="constructores">
+      <thead>
+        <tr><th>Pos</th><th>Escudería</th><th>Puntos</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Mercedes-AMG Petronas</td><td>333</td></tr>
+        <tr><td>2</td><td>Scuderia Ferrari</td><td>255</td></tr>
+        <tr><td>3</td><td>McLaren</td><td>179</td></tr>
+        <tr><td>4</td><td>Red Bull Racing</td><td>128</td></tr>
+        <tr><td>5</td><td>Alpine</td><td>60</td></tr>
+        <tr><td>6</td><td>Racing Bulls</td><td>59</td></tr>
+        <tr><td>7</td><td>Haas</td><td>21</td></tr>
+        <tr><td>8</td><td>Williams</td><td>11</td></tr>
+        <tr><td>9</td><td>Audi</td><td>6</td></tr>
+        <tr><td>10</td><td>Aston Martin</td><td>1</td></tr>
+        <tr><td>11</td><td>Cadillac</td><td>0</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ===== NOTICIAS POR CARRERA ===== -->
+  <section class="section section--alt" id="actual-noticias">
+    <div class="section__head">
+      <p class="section__eyebrow">Última hora</p>
+      <h2 class="section__title">Noticias mas relevantes</h2>
+      <p class="section__lead">Lo más relevante de cada Gran Premio: clasificaciones, sanciones, estrategias y sorpresas.</p>
+    </div>
+
+    <div class="news-grid">
+
+      <article class="news-card">
+        <span class="news-card__tag news-card__tag--carrera">Carrera</span>
+        <img src="imagenes/actualidad/noticias/silverstone-carrera.jpg" alt="GP de Gran Bretaña" class="news-card__img">
+        <div class="news-card__body">
+          <p class="news-card__meta">GP de Gran Bretaña · 5 jul 2026</p>
+          <h3 class="news-card__title">Leclerc con una espectacular carrera demostrando que esta de vuelta gana en Silverstone</h3>
+          <p class="news-card__excerpt">Despues de una gran carrera y un estupendo manejo por parte del monegasco gana una carrera que terminó detras del coche de seguridad.</p>
         </div>
-      </li>
+      </article>
+
+      <article class="news-card">
+        <span class="news-card__tag news-card__tag--sancion">Sanción</span>
+        <img src="imagenes/actualidad/noticias/bélgica-sancion.jpg" alt="GP de Bélgica" class="news-card__img">
+        <div class="news-card__body">
+          <p class="news-card__meta">GP de Bélgica · 18 jul 2026</p>
+          <h3 class="news-card__title">Alonso se une a Norris, Hadjar y Stroll con una penalización en la parrilla de salida en spa</h3>
+          <p class="news-card__excerpt">Se han sustituido varios componentes del motor en el Aston Martin de Fernando Alonso, antes de la sesión de clasificación del Gran Premio de Bélgica.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <span class="news-card__tag news-card__tag--clasificacion">Clasificación</span>
+        <img src="imagenes/actualidad/noticias/bélgica-pole.jpg" alt="GP de Bélgica" class="news-card__img">
+        <div class="news-card__body">
+          <p class="news-card__meta">GP de Bélgica · 18 jul 2026</p>
+          <h3 class="news-card__title">Antonelli logra la pole position en la clasificación del GP de Bélgica.</h3>
+          <p class="news-card__excerpt">Kimi Antonelli brilló en su última vuelta durante la sesión de clasificación para el Gran Premio de Bélgica, superando a Max Verstappen y consiguiendo la pole position.</p>
+        </div>
+      </article>
+
+      <article class="news-card">
+        <span class="news-card__tag news-card__tag--previa">Previa</span>
+        <img src="imagenes/actualidad/noticias/belgica-previa.jpg" alt="GP de Bélgica" class="news-card__img">
+        <div class="news-card__body">
+          <p class="news-card__meta">GP de Bélgica · 17 jul 2026</p>
+          <h3 class="news-card__title">Todo listo para Spa: clima incierto marca la previa</h3>
+          <p class="news-card__excerpt">Las escuderías preparan setups mixtos ante la posibilidad de lluvia en el sector de Eau Rouge.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== CALENDARIO ===== -->
+  <section class="section section--alt" id="actual-calendario">
+    <div class="section__head">
+      <p class="section__eyebrow">22 Grandes Premios</p>
+      <h2 class="section__title">Calendario 2026</h2>
+      <p class="section__lead">Bahréin y Arabia Saudita fueron cancelados este año por la situación en Medio Oriente.</p>
+    </div>
+
+    <ol class="calendar-list">
+      <li class="is-done"><span class="calendar-list__round">01</span><span class="calendar-list__name">GP de Australia</span><span class="calendar-list__place">Albert Park, Melbourne</span><span class="calendar-list__date">6–8 mar</span></li>
+      <li class="is-done"><span class="calendar-list__round">02</span><span class="calendar-list__name">GP de China</span><span class="calendar-list__place">Shanghai International Circuit</span><span class="calendar-list__date">13–15 mar</span></li>
+      <li class="is-done"><span class="calendar-list__round">03</span><span class="calendar-list__name">GP de Japón</span><span class="calendar-list__place">Suzuka Circuit</span><span class="calendar-list__date">27–29 mar</span></li>
+      <li class="is-done"><span class="calendar-list__round">04</span><span class="calendar-list__name">GP de Miami</span><span class="calendar-list__place">Miami International Autodrome</span><span class="calendar-list__date">1–3 may</span></li>
+      <li class="is-done"><span class="calendar-list__round">05</span><span class="calendar-list__name">GP de Canadá</span><span class="calendar-list__place">Circuit Gilles Villeneuve</span><span class="calendar-list__date">22–24 may</span></li>
+      <li class="is-done"><span class="calendar-list__round">06</span><span class="calendar-list__name">GP de Mónaco</span><span class="calendar-list__place">Circuit de Monaco</span><span class="calendar-list__date">5–7 jun</span></li>
+      <li class="is-done"><span class="calendar-list__round">07</span><span class="calendar-list__name">GP de Barcelona-Catalunya</span><span class="calendar-list__place">Circuit de Barcelona-Catalunya</span><span class="calendar-list__date">12–14 jun</span></li>
+      <li class="is-done"><span class="calendar-list__round">08</span><span class="calendar-list__name">GP de Austria</span><span class="calendar-list__place">Red Bull Ring, Spielberg</span><span class="calendar-list__date">26–28 jun</span></li>
+      <li class="is-done"><span class="calendar-list__round">09</span><span class="calendar-list__name">GP de Gran Bretaña</span><span class="calendar-list__place">Silverstone Circuit</span><span class="calendar-list__date">3–5 jul</span></li>
+      <li class="is-next"><span class="calendar-list__round">10</span><span class="calendar-list__name">GP de Bélgica</span><span class="calendar-list__place">Circuit de Spa-Francorchamps</span><span class="calendar-list__date">17–19 jul</span></li>
+      <li><span class="calendar-list__round">11</span><span class="calendar-list__name">GP de Hungría</span><span class="calendar-list__place">Hungaroring, Budapest</span><span class="calendar-list__date">24–26 jul</span></li>
+      <li><span class="calendar-list__round">12</span><span class="calendar-list__name">GP de Países Bajos</span><span class="calendar-list__place">Circuit Zandvoort</span><span class="calendar-list__date">21–23 ago</span></li>
+      <li><span class="calendar-list__round">13</span><span class="calendar-list__name">GP de Italia</span><span class="calendar-list__place">Autodromo di Monza</span><span class="calendar-list__date">4–6 sep</span></li>
+      <li><span class="calendar-list__round">14</span><span class="calendar-list__name">GP de España</span><span class="calendar-list__place">Circuito de Madring, Madrid</span><span class="calendar-list__date">11–13 sep</span></li>
+      <li><span class="calendar-list__round">15</span><span class="calendar-list__name">GP de Azerbaiyán</span><span class="calendar-list__place">Baku City Circuit</span><span class="calendar-list__date">25–27 sep</span></li>
+      <li><span class="calendar-list__round">16</span><span class="calendar-list__name">GP de Singapur</span><span class="calendar-list__place">Marina Bay Street Circuit</span><span class="calendar-list__date">9–11 oct</span></li>
+      <li><span class="calendar-list__round">17</span><span class="calendar-list__name">GP de Estados Unidos</span><span class="calendar-list__place">Circuit of The Americas, Austin</span><span class="calendar-list__date">23–25 oct</span></li>
+      <li><span class="calendar-list__round">18</span><span class="calendar-list__name">GP de México</span><span class="calendar-list__place">Autódromo Hermanos Rodríguez</span><span class="calendar-list__date">30 oct–1 nov</span></li>
+      <li><span class="calendar-list__round">19</span><span class="calendar-list__name">GP de Brasil</span><span class="calendar-list__place">Autódromo José Carlos Pace, Interlagos</span><span class="calendar-list__date">6–8 nov</span></li>
+      <li><span class="calendar-list__round">20</span><span class="calendar-list__name">GP de Las Vegas</span><span class="calendar-list__place">Las Vegas Strip Circuit</span><span class="calendar-list__date">19–21 nov</span></li>
+      <li><span class="calendar-list__round">21</span><span class="calendar-list__name">GP de Catar</span><span class="calendar-list__place">Losail International Circuit</span><span class="calendar-list__date">27–29 nov</span></li>
+      <li><span class="calendar-list__round">22</span><span class="calendar-list__name">GP de Abu Dabi</span><span class="calendar-list__place">Yas Marina Circuit</span><span class="calendar-list__date">4–6 dic</span></li>
     </ol>
   </section>
 
-  <!-- ===== ESCUDERÍAS ===== -->
-  <section class="section section--alt" id="escuderias">
+  <!-- ===== CIRCUITOS DESTACADOS ===== -->
+  <section class="section" id="actual-circuitos">
     <div class="section__head">
-      <p class="section__eyebrow">Los equipos</p>
-      <h2 class="section__title">Escuderías que marcaron época</h2>
-      <p class="section__lead">
-        Detrás de cada piloto hay cientos de personas: ingenieros, mecánicos
-        y estrategas. Estas son cuatro de las escuderías más importantes
-        en la historia de la categoría.
-      </p>
+      <p class="section__eyebrow">Templos de la velocidad</p>
+      <h2 class="section__title">Circuitos destacados de 2026</h2>
+      <p class="section__lead">Seis trazados icónicos del calendario, incluido el debut absoluto de Madring.</p>
     </div>
 
-    <div class="teams">
-      <article class="team-card" style="--team-color:#E10600;">
-        <div class="team-card__bar"></div>
-        <h3 class="team-card__name">Scuderia Ferrari</h3>
-        <p class="team-card__meta">Fundada en 1929 · Maranello, Italia</p>
-        <p class="team-card__desc">El único equipo que ha corrido en todas las temporadas del Mundial desde 1950. Su color rosso corsa es sinónimo de la propia Fórmula 1.</p>
-        <div class="team-card__stats">
-          <div><strong>16</strong><span>Títulos de constructores</span></div>
-          <div><strong>15</strong><span>Títulos de pilotos</span></div>
-        </div>
-      </article>
+    <div class="circuits-grid">
 
-      <article class="team-card" style="--team-color:#27F4D2;">
-        <div class="team-card__bar"></div>
-        <h3 class="team-card__name">Mercedes-AMG Petronas</h3>
-        <p class="team-card__meta">Fundada en 1954 (era actual: 2010) · Brackley, Reino Unido</p>
-        <p class="team-card__desc">Dominó la era híbrida a partir de 2014 con Lewis Hamilton, encadenando ocho títulos de constructores consecutivos entre 2014 y 2021.</p>
-        <div class="team-card__stats">
-          <div><strong>9</strong><span>Títulos de constructores</span></div>
-          <div><strong>8</strong><span>Títulos de pilotos</span></div>
-        </div>
-      </article>
-
-      <article class="team-card" style="--team-color:#3671C6;">
-        <div class="team-card__bar"></div>
-        <h3 class="team-card__name">Red Bull Racing</h3>
-        <p class="team-card__meta">Fundada en 2005 · Milton Keynes, Reino Unido</p>
-        <p class="team-card__desc">Nacida de la antigua escudería Jaguar, se convirtió en potencia con Sebastian Vettel primero y en un imperio con Max Verstappen después.</p>
-        <div class="team-card__stats">
-          <div><strong>6</strong><span>Títulos de constructores</span></div>
-          <div><strong>6</strong><span>Títulos de pilotos</span></div>
-        </div>
-      </article>
-
-      <article class="team-card" style="--team-color:#FF8000;">
-        <div class="team-card__bar"></div>
-        <h3 class="team-card__name">McLaren</h3>
-        <p class="team-card__meta">Fundada en 1963 · Woking, Reino Unido</p>
-        <p class="team-card__desc">Por su fábrica han pasado leyendas como Senna, Prost, Häkkinen y Hamilton. Tras años difíciles, volvió a pelear por el título en 2024.</p>
-        <div class="team-card__stats">
-          <div><strong>9</strong><span>Títulos de constructores</span></div>
-          <div><strong>12</strong><span>Títulos de pilotos</span></div>
-        </div>
-      </article>
-
-      <article class="team-card" style="--team-color:#00A0DE;">
-        <div class="team-card__bar"></div>
-        <h3 class="team-card__name">Williams Racing</h3>
-        <p class="team-card__meta">Fundada en 1977 · Grove, Reino Unido</p>
-        <p class="team-card__desc">Fundada por Frank Williams, fue una potencia dominante en los años 80 y 90, con motores Honda y Renault y pilotos como Nigel Mansell y Ayrton Senna en sus filas.</p>
-        <div class="team-card__stats">
-          <div><strong>9</strong><span>Títulos de constructores</span></div>
-          <div><strong>7</strong><span>Títulos de pilotos</span></div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-
-  <!-- ===== PILOTOS / TABLERO DE TIEMPOS ===== -->
-  <section class="section" id="pilotos">
-    <div class="section__head">
-      <p class="section__eyebrow">Tablero de tiempos</p>
-      <h2 class="section__title">Cuatro pilotos, cuatro eras</h2>
-      <p class="section__lead">
-        Estas son las cifras de carrera de cuatro de los pilotos más
-        relevantes de la historia de la F1, cada uno dominando su propia
-        época del deporte.
-      </p>
-    </div>
-
-    <div class="drivers">
-
-      <article class="driver-card">
-        <div class="driver-card__head">
-          <img src="imagenes/schumacher.jpg" alt="Michael Schumacher" class="driver-card__photo">
-          <span class="driver-card__number">1</span>
-          <div>
-            <h3 class="driver-card__name">Michael Schumacher</h3>
-            <p class="driver-card__team">Benetton · Ferrari (1991–2012)</p>
-          </div>
-        </div>
-        <p class="driver-card__desc">Redefinió la profesionalización del piloto de F1: preparación física, trabajo con ingenieros y una mentalidad ganadora que Ferrari no conocía desde los años 70.</p>
-        <ul class="driver-card__stats">
-          <li><span class="stat" data-count="7">0</span><span class="stat-label">Títulos</span></li>
-          <li><span class="stat" data-count="91">0</span><span class="stat-label">Victorias</span></li>
-          <li><span class="stat" data-count="155">0</span><span class="stat-label">Podios</span></li>
-          <li><span class="stat" data-count="68">0</span><span class="stat-label">Poles</span></li>
+      <article class="circuit-card">
+        <img src="imagenes/actualidad/circuitos/melbourne.jpg" alt="Albert Park" class="circuit-card__img">
+        <h3>Albert Park</h3>
+        <p class="circuit-card__place">Melbourne, Australia</p>
+        <ul class="circuit-card__stats">
+          <li><strong>5.278 km</strong><span>Longitud</span></li>
+          <li><strong>58</strong><span>Vueltas</span></li>
+          <li><strong>1996</strong><span>Desde</span></li>
         </ul>
       </article>
 
-      <article class="driver-card">
-        <div class="driver-card__head">
-          <img src="imagenes/hamilton.jpg" alt="Lewis Hamilton" class="driver-card__photo">
-          <span class="driver-card__number">2</span>
-          <div>
-            <h3 class="driver-card__name">Lewis Hamilton</h3>
-            <p class="driver-card__team">McLaren · Mercedes · Ferrari (2007–act.)</p>
-          </div>
-        </div>
-        <p class="driver-card__desc">El piloto con más victorias, podios y poles de la historia. Ganó seis de sus siete títulos con Mercedes durante la dominante era híbrida.</p>
-        <ul class="driver-card__stats">
-          <li><span class="stat" data-count="7">0</span><span class="stat-label">Títulos</span></li>
-          <li><span class="stat" data-count="106">0</span><span class="stat-label">Victorias</span></li>
-          <li><span class="stat" data-count="206">0</span><span class="stat-label">Podios</span></li>
-          <li><span class="stat" data-count="104">0</span><span class="stat-label">Poles</span></li>
+      <article class="circuit-card">
+        <img src="imagenes/actualidad/circuitos/monaco.jpg" alt="Circuit de Monaco" class="circuit-card__img">
+        <h3>Circuit de Monaco</h3>
+        <p class="circuit-card__place">Montecarlo, Mónaco</p>
+        <ul class="circuit-card__stats">
+          <li><strong>3.337 km</strong><span>Longitud</span></li>
+          <li><strong>78</strong><span>Vueltas</span></li>
+          <li><strong>1950</strong><span>Desde</span></li>
         </ul>
       </article>
 
-      <article class="driver-card">
-        <div class="driver-card__head">
-          <img src="imagenes/verstappen.jpg" alt="Max Verstappen" class="driver-card__photo">
-          <span class="driver-card__number">3</span>
-          <div>
-            <h3 class="driver-card__name">Max Verstappen</h3>
-            <p class="driver-card__team">Toro Rosso · Red Bull Racing (2015–act.)</p>
-          </div>
-        </div>
-        <p class="driver-card__desc">Debutó a los 17 años y se convirtió en el campeón más joven de la historia en 2021. Sus cuatro títulos consecutivos marcan la era más reciente del deporte.</p>
-        <ul class="driver-card__stats">
-          <li><span class="stat" data-count="4">0</span><span class="stat-label">Títulos</span></li>
-          <li><span class="stat" data-count="71">0</span><span class="stat-label">Victorias</span></li>
-          <li><span class="stat" data-count="127">0</span><span class="stat-label">Podios</span></li>
-          <li><span class="stat" data-count="48">0</span><span class="stat-label">Poles</span></li>
+      <article class="circuit-card">
+        <img src="imagenes/actualidad/circuitos/silverstone.jpg" alt="Silverstone" class="circuit-card__img">
+        <h3>Silverstone</h3>
+        <p class="circuit-card__place">Silverstone, Reino Unido</p>
+        <ul class="circuit-card__stats">
+          <li><strong>5.891 km</strong><span>Longitud</span></li>
+          <li><strong>52</strong><span>Vueltas</span></li>
+          <li><strong>1950</strong><span>Desde</span></li>
         </ul>
       </article>
 
-      <article class="driver-card">
-        <div class="driver-card__head">
-          <img src="imagenes/senna.jpg" alt="Ayrton Senna" class="driver-card__photo">
-          <span class="driver-card__number">4</span>
-          <div>
-            <h3 class="driver-card__name">Ayrton Senna</h3>
-            <p class="driver-card__team">Toleman · Lotus · McLaren · Williams (1984–1994)</p>
-          </div>
-        </div>
-        <p class="driver-card__desc">Ícono absoluto del deporte, recordado por su velocidad sobre una vuelta y su manejo bajo lluvia. Su rivalidad con Alain Prost marcó una época. Falleció en 1994 corriendo para Williams.</p>
-        <ul class="driver-card__stats">
-          <li><span class="stat" data-count="3">0</span><span class="stat-label">Títulos</span></li>
-          <li><span class="stat" data-count="41">0</span><span class="stat-label">Victorias</span></li>
-          <li><span class="stat" data-count="80">0</span><span class="stat-label">Podios</span></li>
-          <li><span class="stat" data-count="65">0</span><span class="stat-label">Poles</span></li>
+      <article class="circuit-card">
+        <img src="imagenes/actualidad/circuitos/spa.jpg" alt="Spa-Francorchamps" class="circuit-card__img">
+        <h3>Spa-Francorchamps</h3>
+        <p class="circuit-card__place">Stavelot, Bélgica</p>
+        <ul class="circuit-card__stats">
+          <li><strong>7.004 km</strong><span>Longitud</span></li>
+          <li><strong>44</strong><span>Vueltas</span></li>
+          <li><strong>1950</strong><span>Desde</span></li>
+        </ul>
+      </article>
+
+      <article class="circuit-card">
+        <img src="imagenes/actualidad/circuitos/monza.jpg" alt="Monza" class="circuit-card__img">
+        <h3>Autodromo di Monza</h3>
+        <p class="circuit-card__place">Monza, Italia</p>
+        <ul class="circuit-card__stats">
+          <li><strong>5.793 km</strong><span>Longitud</span></li>
+          <li><strong>53</strong><span>Vueltas</span></li>
+          <li><strong>1950</strong><span>Desde</span></li>
+        </ul>
+      </article>
+
+      <article class="circuit-card circuit-card--new">
+        <img src="imagenes/actualidad/circuitos/madring.jpg" alt="Madring" class="circuit-card__img">
+        <span class="circuit-card__badge">Nuevo en 2026</span>
+        <h3>Madring</h3>
+        <p class="circuit-card__place">IFEMA, Madrid, España</p>
+        <ul class="circuit-card__stats">
+          <li><strong>5.4 km</strong><span>Longitud</span></li>
+          <li><strong>57</strong><span>Vueltas</span></li>
+          <li><strong>22</strong><span>Curvas</span></li>
         </ul>
       </article>
 
     </div>
-
-    <p class="drivers__note">Cifras de carrera acumuladas hasta el inicio de la temporada 2026.</p>
   </section>
 
   <!-- ===== FOOTER ===== -->
@@ -302,19 +552,18 @@
     <p>Pagina realizada y programa por RobinsonVz - Se reserva derecho de autor.</p>
   </footer>
 
-  <!-- ===== MÚSICA DE FONDO =====
-       Coloca tu archivo mp3 (descargado de una web libre de derechos)
-       en la carpeta "audio" con el nombre "tema.mp3". -->
-  <audio id="bgMusic" src="audio/tema.mp3" loop preload="none"></audio>
-
-  <button class="music-toggle" id="musicToggle" aria-label="Reproducir música de fondo" aria-pressed="false">
-    <span class="music-toggle__icon" aria-hidden="true">♪</span>
-  </button>
+  <!-- ===== MODAL DE DATOS DE ESCUDERÍA ===== -->
+  <div class="team-modal-overlay" id="teamModalOverlay">
+    <div class="team-modal" id="teamModal" style="--team-color:#e10600;">
+      <h3 class="team-modal__name" id="teamModalName">Nombre</h3>
+      <ul class="team-modal__stats" id="teamModalStats"></ul>
+    </div>
+  </div>
 
   <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
   <span aria-hidden="true">↑</span>
 </button>
 
-  <script src="script.js"></script>
+  <script src="actualidad.js"></script>
 </body>
 </html>

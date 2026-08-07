@@ -1,0 +1,9 @@
+<article class="news-card">
+  <span class="news-card__tag news-card__tag--carrera">Carrera</span>
+  <img src="imagenes/actualidad/noticias/NOMBRE-ARCHIVO.jpg" alt="GP de XXXX" class="news-card__img">
+  <div class="news-card__body">
+    <p class="news-card__meta">GP de XXXX · DD mes AAAA</p>
+    <h3 class="news-card__title">Título de la noticia</h3>
+    <p class="news-card__excerpt">Resumen breve de lo que pasó.</p>
+  </div>
+</article>

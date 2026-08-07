@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fórmula 1 | Historia, Escuderías y Pilotos</title>
+
+  <!-- Fuentes: Titillium Web (la usan las gráficas oficiales de F1), Inter (texto) y Space Mono (para que los números parezcan un tablero de tiempos) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600;700;900&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== BARRA DE NAVEGACIÓN ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <a href="#inicio" class="navbar__logo">
+        <span class="navbar__flag" aria-hidden="true"></span>
+        F1<span class="navbar__logo-sub">HISTORY</span>
+      </a>
+
+      <nav class="navbar__links" id="navLinks">
+        <a href="index.html">Inicio</a>
+        <a href="index.html">Actualidad</a>
+        <a href="#top">Historia</a>
+        <a href="#escuderias">Escuderías</a>
+        <a href="#pilotos">Pilotos</a>
+      </nav>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO: secuencia de luces de largada ===== -->
+  <section class="hero" id="inicio">
+    <div class="hero__lights" id="startLights" aria-hidden="true">
+      <span class="light"></span>
+      <span class="light"></span>
+      <span class="light"></span>
+      <span class="light"></span>
+      <span class="light"></span>
+    </div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow">Desde 1950 hasta hoy</p>
+      <h1 class="hero__title">La ciencia<br>de ir rápido</h1>
+      <p class="hero__subtitle">
+        Un repaso a la historia de la Fórmula 1, sus escuderías más
+        laureadas y las cifras de tres pilotos que redefinieron el deporte.
+      </p>
+      <a href="#historia" class="hero__cta">Bajar al pit lane ↓</a>
+    </div>
+  </section>
+
+  <!-- ===== HISTORIA: línea de tiempo ===== -->
+  <section class="section" id="historia">
+    <div class="section__head">
+      <p class="section__eyebrow">Cronología</p>
+      <h2 class="section__title">Siete décadas de Fórmula 1</h2>
+      <p class="section__lead">
+        La categoría nació como un campeonato de siete carreras en Europa
+        y hoy es un espectáculo global. Esta línea de tiempo marca los
+        giros más importantes de su historia.
+      </p>
+    </div>
+
+    <ol class="timeline">
+      <li class="timeline__item">
+        <span class="timeline__year">1950</span>
+        <div class="timeline__body">
+          <h3>Nace el Mundial</h3>
+          <p>El 13 de mayo se corre el primer Gran Premio del Campeonato Mundial de Pilotos, en Silverstone, Inglaterra. Giuseppe Farina, con Alfa Romeo, se convierte en el primer campeón de la historia.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">1960s</span>
+        <div class="timeline__body">
+          <h3>El motor se muda atrás</h3>
+          <p>Los equipos británicos popularizan el motor trasero-central, más ligero y aerodinámico. Lotus, con Colin Chapman, empieza a dominar gracias a la innovación técnica más que a la potencia bruta.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">1980s</span>
+        <div class="timeline__body">
+          <h3>La era turbo</h3>
+          <p>Los motores turboalimentados superan los 1.000 caballos de fuerza en clasificación. Es también la década de la fibra de carbono y de rivalidades históricas como la de Senna y Prost.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">1990s</span>
+        <div class="timeline__body">
+          <h3>Seguridad y un nuevo ídolo</h3>
+          <p>Tras el trágico fin de semana de Imola en 1994, la seguridad se vuelve prioridad. En ese mismo año, un joven Michael Schumacher gana su primer título y empieza a construir una dinastía.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">2000–2004</span>
+        <div class="timeline__body">
+          <h3>Dominio absoluto de Ferrari</h3>
+          <p>Schumacher y Ferrari ganan cinco campeonatos consecutivos, una de las rachas más dominantes del deporte, apoyada en un equipo técnico liderado por Ross Brawn y Rory Byrne.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">2014</span>
+        <div class="timeline__body">
+          <h3>Llega la era híbrida</h3>
+          <p>La F1 introduce motores turbo V6 híbridos, mucho más eficientes. Mercedes entiende mejor que nadie el nuevo reglamento y comienza un ciclo de dominio con Lewis Hamilton como su gran figura.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">2021–2024</span>
+        <div class="timeline__body">
+          <h3>Se corona un nuevo rey</h3>
+          <p>Tras un final de temporada 2021 histórico, Max Verstappen y Red Bull Racing toman el relevo de Mercedes y encadenan cuatro títulos de pilotos consecutivos.</p>
+        </div>
+      </li>
+
+      <li class="timeline__item">
+        <span class="timeline__year">Hoy</span>
+        <div class="timeline__body">
+          <h3>Nueva generación, misma pasión</h3>
+          <p>Nuevos talentos pelean por el título mientras la F1 vive un boom global de audiencia, impulsado por más carreras, más ciudades y más historias fuera de la pista.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ===== ESCUDERÍAS ===== -->
+  <section class="section section--alt" id="escuderias">
+    <div class="section__head">
+      <p class="section__eyebrow">Los equipos</p>
+      <h2 class="section__title">Escuderías que marcaron época</h2>
+      <p class="section__lead">
+        Detrás de cada piloto hay cientos de personas: ingenieros, mecánicos
+        y estrategas. Estas son cuatro de las escuderías más importantes
+        en la historia de la categoría.
+      </p>
+    </div>
+
+    <div class="teams">
+      <article class="team-card" style="--team-color:#E10600;">
+        <div class="team-card__bar"></div>
+        <h3 class="team-card__name">Scuderia Ferrari</h3>
+        <p class="team-card__meta">Fundada en 1929 · Maranello, Italia</p>
+        <p class="team-card__desc">El único equipo que ha corrido en todas las temporadas del Mundial desde 1950. Su color rosso corsa es sinónimo de la propia Fórmula 1.</p>
+        <div class="team-card__stats">
+          <div><strong>16</strong><span>Títulos de constructores</span></div>
+          <div><strong>15</strong><span>Títulos de pilotos</span></div>
+        </div>
+      </article>
+
+      <article class="team-card" style="--team-color:#27F4D2;">
+        <div class="team-card__bar"></div>
+        <h3 class="team-card__name">Mercedes-AMG Petronas</h3>
+        <p class="team-card__meta">Fundada en 1954 (era actual: 2010) · Brackley, Reino Unido</p>
+        <p class="team-card__desc">Dominó la era híbrida a partir de 2014 con Lewis Hamilton, encadenando ocho títulos de constructores consecutivos entre 2014 y 2021.</p>
+        <div class="team-card__stats">
+          <div><strong>9</strong><span>Títulos de constructores</span></div>
+          <div><strong>8</strong><span>Títulos de pilotos</span></div>
+        </div>
+      </article>
+
+      <article class="team-card" style="--team-color:#3671C6;">
+        <div class="team-card__bar"></div>
+        <h3 class="team-card__name">Red Bull Racing</h3>
+        <p class="team-card__meta">Fundada en 2005 · Milton Keynes, Reino Unido</p>
+        <p class="team-card__desc">Nacida de la antigua escudería Jaguar, se convirtió en potencia con Sebastian Vettel primero y en un imperio con Max Verstappen después.</p>
+        <div class="team-card__stats">
+          <div><strong>6</strong><span>Títulos de constructores</span></div>
+          <div><strong>6</strong><span>Títulos de pilotos</span></div>
+        </div>
+      </article>
+
+      <article class="team-card" style="--team-color:#FF8000;">
+        <div class="team-card__bar"></div>
+        <h3 class="team-card__name">McLaren</h3>
+        <p class="team-card__meta">Fundada en 1963 · Woking, Reino Unido</p>
+        <p class="team-card__desc">Por su fábrica han pasado leyendas como Senna, Prost, Häkkinen y Hamilton. Tras años difíciles, volvió a pelear por el título en 2024.</p>
+        <div class="team-card__stats">
+          <div><strong>9</strong><span>Títulos de constructores</span></div>
+          <div><strong>12</strong><span>Títulos de pilotos</span></div>
+        </div>
+      </article>
+
+      <article class="team-card" style="--team-color:#00A0DE;">
+        <div class="team-card__bar"></div>
+        <h3 class="team-card__name">Williams Racing</h3>
+        <p class="team-card__meta">Fundada en 1977 · Grove, Reino Unido</p>
+        <p class="team-card__desc">Fundada por Frank Williams, fue una potencia dominante en los años 80 y 90, con motores Honda y Renault y pilotos como Nigel Mansell y Ayrton Senna en sus filas.</p>
+        <div class="team-card__stats">
+          <div><strong>9</strong><span>Títulos de constructores</span></div>
+          <div><strong>7</strong><span>Títulos de pilotos</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- ===== PILOTOS / TABLERO DE TIEMPOS ===== -->
+  <section class="section" id="pilotos">
+    <div class="section__head">
+      <p class="section__eyebrow">Tablero de tiempos</p>
+      <h2 class="section__title">Cuatro pilotos, cuatro eras</h2>
+      <p class="section__lead">
+        Estas son las cifras de carrera de cuatro de los pilotos más
+        relevantes de la historia de la F1, cada uno dominando su propia
+        época del deporte.
+      </p>
+    </div>
+
+    <div class="drivers">
+
+      <article class="driver-card">
+        <div class="driver-card__head">
+          <img src="imagenes/schumacher.jpg" alt="Michael Schumacher" class="driver-card__photo">
+          <span class="driver-card__number">1</span>
+          <div>
+            <h3 class="driver-card__name">Michael Schumacher</h3>
+            <p class="driver-card__team">Benetton · Ferrari (1991–2012)</p>
+          </div>
+        </div>
+        <p class="driver-card__desc">Redefinió la profesionalización del piloto de F1: preparación física, trabajo con ingenieros y una mentalidad ganadora que Ferrari no conocía desde los años 70.</p>
+        <ul class="driver-card__stats">
+          <li><span class="stat" data-count="7">0</span><span class="stat-label">Títulos</span></li>
+          <li><span class="stat" data-count="91">0</span><span class="stat-label">Victorias</span></li>
+          <li><span class="stat" data-count="155">0</span><span class="stat-label">Podios</span></li>
+          <li><span class="stat" data-count="68">0</span><span class="stat-label">Poles</span></li>
+        </ul>
+      </article>
+
+      <article class="driver-card">
+        <div class="driver-card__head">
+          <img src="imagenes/hamilton.jpg" alt="Lewis Hamilton" class="driver-card__photo">
+          <span class="driver-card__number">2</span>
+          <div>
+            <h3 class="driver-card__name">Lewis Hamilton</h3>
+            <p class="driver-card__team">McLaren · Mercedes · Ferrari (2007–act.)</p>
+          </div>
+        </div>
+        <p class="driver-card__desc">El piloto con más victorias, podios y poles de la historia. Ganó seis de sus siete títulos con Mercedes durante la dominante era híbrida.</p>
+        <ul class="driver-card__stats">
+          <li><span class="stat" data-count="7">0</span><span class="stat-label">Títulos</span></li>
+          <li><span class="stat" data-count="106">0</span><span class="stat-label">Victorias</span></li>
+          <li><span class="stat" data-count="206">0</span><span class="stat-label">Podios</span></li>
+          <li><span class="stat" data-count="104">0</span><span class="stat-label">Poles</span></li>
+        </ul>
+      </article>
+
+      <article class="driver-card">
+        <div class="driver-card__head">
+          <img src="imagenes/verstappen.jpg" alt="Max Verstappen" class="driver-card__photo">
+          <span class="driver-card__number">3</span>
+          <div>
+            <h3 class="driver-card__name">Max Verstappen</h3>
+            <p class="driver-card__team">Toro Rosso · Red Bull Racing (2015–act.)</p>
+          </div>
+        </div>
+        <p class="driver-card__desc">Debutó a los 17 años y se convirtió en el campeón más joven de la historia en 2021. Sus cuatro títulos consecutivos marcan la era más reciente del deporte.</p>
+        <ul class="driver-card__stats">
+          <li><span class="stat" data-count="4">0</span><span class="stat-label">Títulos</span></li>
+          <li><span class="stat" data-count="71">0</span><span class="stat-label">Victorias</span></li>
+          <li><span class="stat" data-count="127">0</span><span class="stat-label">Podios</span></li>
+          <li><span class="stat" data-count="48">0</span><span class="stat-label">Poles</span></li>
+        </ul>
+      </article>
+
+      <article class="driver-card">
+        <div class="driver-card__head">
+          <img src="imagenes/senna.jpg" alt="Ayrton Senna" class="driver-card__photo">
+          <span class="driver-card__number">4</span>
+          <div>
+            <h3 class="driver-card__name">Ayrton Senna</h3>
+            <p class="driver-card__team">Toleman · Lotus · McLaren · Williams (1984–1994)</p>
+          </div>
+        </div>
+        <p class="driver-card__desc">Ícono absoluto del deporte, recordado por su velocidad sobre una vuelta y su manejo bajo lluvia. Su rivalidad con Alain Prost marcó una época. Falleció en 1994 corriendo para Williams.</p>
+        <ul class="driver-card__stats">
+          <li><span class="stat" data-count="3">0</span><span class="stat-label">Títulos</span></li>
+          <li><span class="stat" data-count="41">0</span><span class="stat-label">Victorias</span></li>
+          <li><span class="stat" data-count="80">0</span><span class="stat-label">Podios</span></li>
+          <li><span class="stat" data-count="65">0</span><span class="stat-label">Poles</span></li>
+        </ul>
+      </article>
+
+    </div>
+
+    <p class="drivers__note">Cifras de carrera acumuladas hasta el inicio de la temporada 2026.</p>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Pagina realizada y programa por RobinsonVz - Se reserva derecho de autor.</p>
+  </footer>
+
+  <!-- ===== MÚSICA DE FONDO =====
+       Coloca tu archivo mp3 (descargado de una web libre de derechos)
+       en la carpeta "audio" con el nombre "tema.mp3". -->
+  <audio id="bgMusic" src="audio/tema.mp3" loop preload="none"></audio>
+
+  <button class="music-toggle" id="musicToggle" aria-label="Reproducir música de fondo" aria-pressed="false">
+    <span class="music-toggle__icon" aria-hidden="true">♪</span>
+  </button>
+
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+  <span aria-hidden="true">↑</span>
+</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
