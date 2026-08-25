@@ -190,7 +190,7 @@ const teamModalName = document.getElementById("teamModalName");
 const teamModalStats = document.getElementById("teamModalStats");
 
 teamCards.forEach((card) => {
-  card.addEventListener("click", () => {
+  card.addEventListener("mouseenter", () => {
     const name = card.querySelector("h3").textContent;
     const color = getComputedStyle(card).getPropertyValue("--team-color").trim();
     const founded = card.dataset.founded;
@@ -293,3 +293,24 @@ async function cargarClasificacion() {
 }
 
 cargarClasificacion();
+
+/* =========================================================
+   MÚSICA DE FONDO
+========================================================= */
+const bgMusic = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("musicToggle");
+
+musicToggle.addEventListener("click", () => {
+  if (bgMusic.paused) {
+    bgMusic.volume = 0.2;
+    bgMusic
+      .play()
+      .catch(() => {
+        console.warn("No se pudo reproducir el audio. ¿Copiaste el archivo a /audio/tema.mp3?");
+      });
+    musicToggle.setAttribute("aria-pressed", "true");
+  } else {
+    bgMusic.pause();
+    musicToggle.setAttribute("aria-pressed", "false");
+  }
+});
