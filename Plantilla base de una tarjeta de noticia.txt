@@ -7,3 +7,7 @@
     <p class="news-card__excerpt">Resumen breve de lo que pasó.</p>
   </div>
 </article>
+
+git add .
+git commit -m "descripción del cambio"
+git push
