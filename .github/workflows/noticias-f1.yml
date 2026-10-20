@@ -1,14 +1,20 @@
 
-name: Prueba de imagenes F1
+name: Noticias F1 automaticas
 
 on:
+  schedule:
+    - cron: '0 13 * * 1'
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: noticias-f1
+  cancel-in-progress: false
 
 jobs:
-  probar-imagenes:
+  actualizar:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,15 +32,17 @@ jobs:
       - name: Ejecutar pruebas
         run: python -m unittest discover -s tests -v
 
-      - name: Ejecutar extractor sin publicar
-        run: python scripts/actualizar_noticias.py --gp-date 2026-10-11
+      - name: Actualizar noticias
+        run: python scripts/actualizar_noticias.py
 
-      - name: Guardar resultados de la prueba
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: resultado-prueba-f1
-          path: |
-            index.html
-            imagenes/noticias/
-          retention-days: 7
+      - name: Publicar cambios
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html imagenes/noticias/
+          if ! git diff --cached --quiet; then
+            git commit -m "Actualizar noticias del ultimo GP"
+            git push
+          else
+            echo "No hay cambios para publicar."
+          fi
