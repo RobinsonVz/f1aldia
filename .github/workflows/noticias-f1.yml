@@ -1,0 +1,40 @@
+
+name: Prueba de imagenes F1
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probar-imagenes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar dependencias
+        run: pip install gnews-decoder
+
+      - name: Ejecutar pruebas
+        run: python -m unittest discover -s tests -v
+
+      - name: Ejecutar extractor sin publicar
+        run: python scripts/actualizar_noticias.py
+
+      - name: Guardar resultados de la prueba
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultado-prueba-f1
+          path: |
+            index.html
+            imagenes/noticias/
+          retention-days: 7
