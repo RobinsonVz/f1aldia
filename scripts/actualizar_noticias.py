@@ -208,12 +208,12 @@ def main():
         result=fetch_image(a['image'])
         if not result: continue
         data,ext=result
-        name=hashlib.sha256(data).hexdigest()[:20]+ext
-        if name in seen_image_hashes: continue
-        seen_image_hashes.add(name)
-        a['local_image']='imagenes/noticias/'+name
+        image_name=hashlib.sha256(data).hexdigest()[:20]+ext
+        if image_name in seen_image_hashes: continue
+        seen_image_hashes.add(image_name)
+        a['local_image']='imagenes/noticias/'+image_name
         chosen.append(a)
-        prepared.append((name,data))
+        prepared.append((image_name,data))
         if len(chosen)==4: break
     print(f"Fotografías distintas descargadas: {len(chosen)}")
     if len(chosen)!=4:
